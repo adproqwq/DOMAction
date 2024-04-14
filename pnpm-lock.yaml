@@ -16,12 +16,15 @@ dependencies:
     version: 2.2.3
 
 devDependencies:
+  '@types/node':
+    specifier: ^20.12.7
+    version: 20.12.7
   typescript:
     specifier: ^5.3.3
     version: 5.4.5
   vite:
     specifier: ^5.0.11
-    version: 5.2.8
+    version: 5.2.8(@types/node@20.12.7)
   vite-plugin-monkey:
     specifier: ^3.5.1
     version: 3.5.2(vite@5.2.8)
@@ -369,6 +372,12 @@ packages:
 
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+    dev: true
+
+  /@types/node@20.12.7:
+    resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
+    dependencies:
+      undici-types: 5.26.5
     dev: true
 
   /acorn-walk@8.3.2:
@@ -770,6 +779,10 @@ packages:
     hasBin: true
     dev: true
 
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
+
   /untildify@4.0.0:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
@@ -792,10 +805,10 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       systemjs: 6.14.3
-      vite: 5.2.8
+      vite: 5.2.8(@types/node@20.12.7)
     dev: true
 
-  /vite@5.2.8:
+  /vite@5.2.8(@types/node@20.12.7):
     resolution: {integrity: sha512-OyZR+c1CE8yeHw5V5t59aXsUPPVTHMDjEZz8MgguLL/Q7NblxhZUlTu9xSPqlsUO/y+X7dlU05jdhvyycD55DA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -823,6 +836,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.12.7
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.14.2

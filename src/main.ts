@@ -1,37 +1,55 @@
 import sub from "./sub";
-import NxUrlWatcher from '@jswork/next-url-watcher';
+import { pushStateProxy } from "./proxy";
+import { RawUrlRule } from "./params";
 
-const URLWatcher = new NxUrlWatcher({
-  immediate: true,
-});
-URLWatcher.watch((old: string, current: string) => {
-  if(old !== current) action();
+var oldUrl: string = window.location.href;
+var currentUrl: string;
+
+// 替换原生的 pushState 方法
+history.pushState = pushStateProxy;
+// 监听自定义的 pushstate 事件
+window.addEventListener('pushstate', () => {
+  currentUrl = window.location.href;
+  if(oldUrl !== currentUrl) check();
 });
 
-const action = () => {
+const check = () => {
   sub.rules.forEach((p) => {
-    if(window.location.href.startsWith(p.originUrl)){
-      p.rules.forEach((r) => {
-        var isNotExclude = true;
-        var path = window.location.pathname.match(r.path);
-        if(typeof r.excludeMatches !== 'undefined' && r.excludeMatches.length !== 0){
-          isNotExclude = r.excludeMatches?.every((e) => {
-            if(!path) return;
-            return !window.location.href.startsWith(`${p.originUrl}/${path[0]}/${e}`);
-          });
-        }
-        if(isNotExclude && window.location.href.startsWith(`${p.originUrl}/${path![0]}`)){
-          r.pageRules.forEach((s) => {
-            let matchDelay: number;
-            typeof s.matchDelay === 'undefined' ? matchDelay = 0 : matchDelay = s.matchDelay;
-            setTimeout(() => {
-              document.querySelectorAll(s.rule).forEach((n) => {
-                (n as HTMLElement).click();
-              });
-            }, matchDelay);
-          });
-        }
-      });
-    }
+    if(window.location.href.startsWith(p.originUrl)) checkIsExcluded(p.rules);
   });
+};
+
+const checkIsExcluded = (pageRules: RawUrlRule[]) => {
+  var workRules: RawUrlRule[] = [];
+  pageRules.forEach((r) => {
+    var isNotExcluded = true;
+    var path = window.location.pathname.match(r.path);
+    if(path === null) return;
+    if(typeof r.excludeMatches !== 'undefined' && r.excludeMatches.length !== 0){
+      isNotExcluded = walkExcludePagesArray(path, r.excludeMatches);
+    }
+    if(isNotExcluded) workRules.push(r);
+  });
+  if(workRules.length != 0) action(workRules);
+};
+
+const action = (workRules: RawUrlRule[]) => {
+  workRules.forEach((p) => {
+    p.pageRules.forEach((r) => {
+      var matchDelay = typeof r.matchDelay === 'undefined' ? 0 : r.matchDelay;
+      setTimeout(() => {
+        let targetNode = document.querySelectorAll(r.rule);
+        for(const i in targetNode){
+          (targetNode[i] as HTMLElement).click();
+        }
+      }, matchDelay);
+    });
+  });
+};
+
+const walkExcludePagesArray = (path: string[], excludePages: string[]): boolean => {
+  for(const e of excludePages){
+    if(window.location.pathname.startsWith(`/${path![0]}/${e}`)) return false;
+  }
+  return true;
 };

@@ -9,6 +9,8 @@ export default defineConfig({
       userscript: {
         icon: 'https://vitejs.dev/logo.svg',
         namespace: 'https://blog.adproqwq.xyz',
+        name: 'DOMAction',
+        author: 'Adpro',
         match: ['*://*/*'],
       },
     }),

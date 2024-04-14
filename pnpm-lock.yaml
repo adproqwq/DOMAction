@@ -5,12 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@jswork/next':
-    specifier: ^1.2.2
-    version: 1.2.2
-  '@jswork/next-url-watcher':
-    specifier: ^1.0.5
-    version: 1.0.5
   json5:
     specifier: ^2.2.3
     version: 2.2.3
@@ -451,14 +445,6 @@ packages:
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
-
-  /@jswork/next-url-watcher@1.0.5:
-    resolution: {integrity: sha512-ArhqLoUBIbOWzwlG3gC5ZC3yRe2xawvG2P2Qrc6yOghD9rsbLKtp8Kx/RKyER9UhY3UeZshAHIyrSTCVgFYSyg==}
-    dev: false
-
-  /@jswork/next@1.2.2:
-    resolution: {integrity: sha512-O+es6RQWctxFoMKv47eDw02T7HOhiKzX5H07DGCk7m8Qlik+LZy3MINRPbulboajkKvMSz56X2NQd+Hv9q0bBw==}
-    dev: false
 
   /@rollup/rollup-android-arm-eabi@4.14.2:
     resolution: {integrity: sha512-ahxSgCkAEk+P/AVO0vYr7DxOD3CwAQrT0Go9BJyGQ9Ef0QxVOfjDZMiF4Y2s3mLyPrjonchIMH/tbWHucJMykQ==}

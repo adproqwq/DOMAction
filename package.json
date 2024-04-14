@@ -1,7 +1,7 @@
 {
   "name": "dom-action",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,8 +16,6 @@
     "vite-plugin-monkey": "^3.5.1"
   },
   "dependencies": {
-    "@jswork/next": "^1.2.2",
-    "@jswork/next-url-watcher": "^1.0.5",
     "json5": "^2.2.3",
     "tsx": "^4.7.2"
   },

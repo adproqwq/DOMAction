@@ -5,7 +5,7 @@ on:
   push:
     branches: main
     paths:
-      - 'sub.ts'
+      - '/src/sub.ts'
 
 jobs:
   build:

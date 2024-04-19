@@ -63,11 +63,9 @@ export interface RawUrlRule {
    * 
    * @example /abc/
    * 
-   * 正则表达式可以是string类型，也可以是RegExp类型
-   * 
-   * 即：'/abc/'与/abc/等效
+   * 正则表达式是string类型
    */
-  path: string | RegExp;
+  path: string;
 
   /**
    * 在该子页面下不匹配的子页面

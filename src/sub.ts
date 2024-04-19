@@ -9,7 +9,7 @@ const sub: RawSubscription = {
       originUrl: 'https://stackoverflow.blog',
       rules: [
         {
-          path: /[a-zA-Z0-9\-]+/,
+          path: '/[a-zA-Z0-9\-]+/',
           pageRules: [
             {
               name: 'cookie获取询问弹窗',

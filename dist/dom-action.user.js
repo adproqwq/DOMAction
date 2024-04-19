@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       DOMAction
 // @namespace  https://blog.adproqwq.xyz
-// @version    0.1.0
+// @version    0.1.1
 // @author     Adpro
 // @icon       https://vitejs.dev/logo.svg
 // @match      *://*/*
@@ -13,19 +13,34 @@
   const sub = {
     name: "基础订阅",
     author: "Adpro",
-    version: 0,
+    version: 1,
     rules: [
       {
         originUrl: "https://stackoverflow.blog",
         rules: [
           {
-            path: /[a-zA-Z0-9\-]+/,
+            path: "/[a-zA-Z0-9-]+/",
             pageRules: [
               {
                 name: "cookie获取询问弹窗",
                 action: "click",
                 matchDelay: 2e3,
                 rule: "#onetrust-reject-all-handler"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        originUrl: "https://github.com",
+        rules: [
+          {
+            path: "",
+            pageRules: [
+              {
+                name: "首页右侧可关闭卡片",
+                action: "click",
+                rule: ".js-notice * .position-absolute.p-2 .close-button.color-fg-on-emphasis"
               }
             ]
           }

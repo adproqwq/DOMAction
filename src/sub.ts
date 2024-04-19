@@ -3,7 +3,7 @@ import { RawSubscription } from "./params";
 const sub: RawSubscription = {
   name: '基础订阅',
   author: 'Adpro',
-  version: 0,
+  version: 1,
   rules: [
     {
       originUrl: 'https://stackoverflow.blog',

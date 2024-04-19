@@ -30,6 +30,7 @@ const sub: RawSubscription = {
             {
               name: '首页右侧可关闭卡片',
               action: 'click',
+              matchDelay: 2000,
               rule: '.js-notice * .position-absolute.p-2 .close-button.color-fg-on-emphasis',
             },
           ],

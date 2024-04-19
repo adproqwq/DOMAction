@@ -23,10 +23,10 @@ const checkIsExcluded = (pageRules: RawUrlRule[]) => {
   var workRules: RawUrlRule[] = [];
   pageRules.forEach((r) => {
     var isNotExcluded = true;
-    var path = window.location.pathname.match(r.path);
-    if(path === null) return;
+    var path = window.location.pathname.startsWith(`/${r.path}`);
+    if(!path) return;
     if(typeof r.excludeMatches !== 'undefined' && r.excludeMatches.length !== 0){
-      isNotExcluded = walkExcludePagesArray(path, r.excludeMatches);
+      isNotExcluded = walkExcludePagesArray(r.path, r.excludeMatches);
     }
     if(isNotExcluded) workRules.push(r);
   });
@@ -47,9 +47,9 @@ const action = (workRules: RawUrlRule[]) => {
   });
 };
 
-const walkExcludePagesArray = (path: string[], excludePages: string[]): boolean => {
+const walkExcludePagesArray = (path: string, excludePages: string[]): boolean => {
   for(const e of excludePages){
-    if(window.location.pathname.startsWith(`/${path![0]}/${e}`)) return false;
+    if(window.location.pathname.startsWith(`/${path}/${e}`)) return false;
   }
   return true;
 };

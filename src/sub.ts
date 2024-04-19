@@ -21,6 +21,21 @@ const sub: RawSubscription = {
         },
       ],
     },
+    {
+      originUrl: 'https://github.com',
+      rules: [
+        {
+          path: '',
+          pageRules: [
+            {
+              name: '首页右侧可关闭卡片',
+              action: 'click',
+              rule: '.js-notice * .position-absolute.p-2 .close-button.color-fg-on-emphasis',
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 

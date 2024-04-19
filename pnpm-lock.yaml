@@ -17,13 +17,13 @@ devDependencies:
     specifier: ^20.12.7
     version: 20.12.7
   typescript:
-    specifier: ^5.3.3
+    specifier: ^5.4.5
     version: 5.4.5
   vite:
-    specifier: ^5.0.11
+    specifier: ^5.2.8
     version: 5.2.8(@types/node@20.12.7)
   vite-plugin-monkey:
-    specifier: ^3.5.1
+    specifier: ^3.5.2
     version: 3.5.2(vite@5.2.8)
 
 packages:

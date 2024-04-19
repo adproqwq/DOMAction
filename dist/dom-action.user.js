@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       DOMAction
 // @namespace  https://blog.adproqwq.xyz
-// @version    0.1.1
+// @version    0.1.2
 // @author     Adpro
 // @icon       https://vitejs.dev/logo.svg
 // @match      *://*/*
@@ -81,11 +81,11 @@
     var workRules = [];
     pageRules.forEach((r) => {
       var isNotExcluded = true;
-      var path = window.location.pathname.match(r.path);
-      if (path === null)
+      var path = window.location.pathname.startsWith(`/${r.path}`);
+      if (!path)
         return;
       if (typeof r.excludeMatches !== "undefined" && r.excludeMatches.length !== 0) {
-        isNotExcluded = walkExcludePagesArray(path, r.excludeMatches);
+        isNotExcluded = walkExcludePagesArray(r.path, r.excludeMatches);
       }
       if (isNotExcluded)
         workRules.push(r);
@@ -108,7 +108,7 @@
   };
   const walkExcludePagesArray = (path, excludePages) => {
     for (const e of excludePages) {
-      if (window.location.pathname.startsWith(`/${path[0]}/${e}`))
+      if (window.location.pathname.startsWith(`/${path}/${e}`))
         return false;
     }
     return true;
